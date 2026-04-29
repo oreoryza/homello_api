@@ -3,8 +3,8 @@ export default async function handler(req, res) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      accountId: import.meta.env.HOSTAWAY_ACCOUNT_ID,
-      apiKey: import.meta.env.HOSTAWAY_API_KEY              
+      accountId: process.env.HOSTAWAY_ACCOUNT_ID,
+      apiKey: process.env.HOSTAWAY_API_KEY              
     })
   });
 
