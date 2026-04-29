@@ -12,13 +12,10 @@ export default async function handler(req, res) {
     });
 
     const tokenData = await tokenRes.json();
-    console.log("TOKEN:", tokenData);
+    console.log("TOKEN RESPONSE:", tokenData);
 
     if (!tokenData.accessToken) {
-      return res.status(400).json({
-        error: 'Failed to get token',
-        detail: tokenData
-      });
+      return res.status(400).json(tokenData);
     }
 
     const listingsRes = await fetch('https://api.hostaway.com/v1/listings', {
