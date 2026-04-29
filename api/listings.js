@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   },
   body: new URLSearchParams({
     grant_type: 'client_credentials',
-    client_id: process.env.HOSTAWAY_ACCOUNT_ID,
-    client_secret: process.env.HOSTAWAY_API_KEY
+    client_id: '167223',
+    client_secret: '8474ddb77167d0f5aebdf00aac4c9cf71c4d1a35f57bc42e05cd649a3b99f683'
   })
 });
 
