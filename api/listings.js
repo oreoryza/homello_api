@@ -1,14 +1,22 @@
 export default async function handler(req, res) {
+  // ✅ HANDLE CORS
+  res.setHeader('Access-Control-Allow-Origin', '*'); // bisa diganti domain Webflow kamu
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  // ✅ HANDLE PREFLIGHT (penting!)
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   try {
-    // STEP 1: ambil token dulu
+    // ambil token
     const tokenRes = await fetch(`${process.env.BASE_URL}/api/token`);
     const tokenData = await tokenRes.json();
-
     const accessToken = tokenData.access_token;
 
-    // STEP 2: call Hostaway API
+    // call Hostaway
     const response = await fetch('https://api.hostaway.com/v1/listings', {
-      method: 'GET',
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
