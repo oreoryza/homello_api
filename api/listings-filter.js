@@ -1,4 +1,6 @@
 export default async function handler(req, res) {
+  const { availabilityDateStart } = req.query;
+  const { availabilityDateEnd } = req.query;
 
   // ✅ HANDLE CORS
   res.setHeader('Access-Control-Allow-Origin', '*'); // bisa diganti domain Webflow kamu
@@ -17,7 +19,7 @@ export default async function handler(req, res) {
     const accessToken = tokenData.access_token;
 
     // call Hostaway
-    const response = await fetch(`https://api.hostaway.com/v1/listings`, {
+    const response = await fetch(`https://api.hostaway.com/v1/listings?availabilityDateStart=${availabilityDateStart}&availabilityDateEnd=${availabilityDateEnd}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
