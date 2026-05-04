@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     const tokenRes = await fetch(`${process.env.BASE_URL}/api/token`);
     const tokenData = await tokenRes.json();
 
-    const response = await fetch(`https://api.hostaway.com/v1/listings/${id}?includeResources=*`, {
+    const response = await fetch(`https://api.hostaway.com/v1/listings/${id}?includeResources=1`, {
       headers: {
         Authorization: `Bearer ${tokenData.access_token}`
       }
