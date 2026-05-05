@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     const accessToken = tokenData.access_token;
 
     // call Hostaway
-    const response = await fetch(`https://booking-engine.hostaway.com/bookingEngines/homello/listings/433790/calendar/priceDetails`, {
+    const response = await fetch(`https://api.hostaway.com/v1/listings/433790/calendar/priceDetails`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
