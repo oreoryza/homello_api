@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         startingDate: "2026-06-03",
         endingDate: "2026-06-06",
         numberOfGuests: 2,
-        version: 2
+        version: "2"
       })
     });
 
