@@ -17,16 +17,16 @@ export default async function handler(req, res) {
     const accessToken = tokenData.access_token;
 
     // ✅ CALL endpoint yang benar
-    const response = await fetch(`https://api.hostaway.com/v1/listings/427525/calendar/priceDetails`, {
+    const response = await fetch(`https://api.hostaway.com/v1/listings/${listingId}/calendar/priceDetails`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        startingDate: "2026-05-26",
-        endingDate: "2026-05-27",
-        numberOfGuests: 2,
+        startingDate: start,
+        endingDate: end,
+        numberOfGuests: Number(guests),
         version: 2
       })
     });
