@@ -38,7 +38,6 @@ export default async function handler(req, res) {
 
       guestNote,
 
-      financeField
     } = req.body;
 
     // =========================
@@ -97,8 +96,6 @@ export default async function handler(req, res) {
       currency: 'NZD',
 
       guestNote: guestNote || '',
-
-      financeField,
 
       isManuallyChecked: 0,
       isInitial: 0
