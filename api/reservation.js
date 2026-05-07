@@ -74,7 +74,7 @@ export default async function handler(req, res) {
     // REQUEST BODY
     // =========================
     const payload = {
-      channelId: 2013,
+      channelId: 2000,
 
       listingMapId,
 
