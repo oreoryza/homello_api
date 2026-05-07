@@ -30,18 +30,15 @@ export default async function handler(req, res) {
       guestFirstName,
       guestLastName,
       guestEmail,
-      guestPhone,
+      phone,
 
       numberOfGuests,
-      adults,
-      children,
-      infants,
-      pets,
 
       totalPrice,
-      currency,
 
-      note
+      guestNote,
+
+      financeField
     } = req.body;
 
     // =========================
@@ -77,7 +74,7 @@ export default async function handler(req, res) {
     // REQUEST BODY
     // =========================
     const payload = {
-      channelId: 2000,
+      channelId: 2013,
 
       listingMapId,
 
@@ -91,20 +88,17 @@ export default async function handler(req, res) {
       guestLastName,
 
       guestEmail,
-      guestPhone,
+      phone,
 
-      numberOfGuests: numberOfGuests || adults || 1,
-
-      adults: adults || 1,
-      children: children || 0,
-      infants: infants || 0,
-      pets: pets || 0,
+      numberOfGuests: numberOfGuests || 1,
 
       totalPrice: totalPrice || 0,
 
-      currency: currency || 'USD',
+      currency: 'NZD',
 
-      note: note || '',
+      guestNote: guestNote || '',
+
+      financeField,
 
       isManuallyChecked: 0,
       isInitial: 0
