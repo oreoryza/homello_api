@@ -34,7 +34,7 @@ export default async function handler(req, res) {
 
     const calendarPromise = fetch(calendarUrl, { headers });
 
-    // 🚀 paralel
+    // 🚀 ambil listing + calendar paralel
     const [listingRes, calendarRes] = await Promise.all([
       listingPromise,
       calendarPromise
@@ -43,9 +43,26 @@ export default async function handler(req, res) {
     const listingData = await listingRes.json();
     const calendarData = await calendarRes.json();
 
+    // 🔥 ambil cancellation policy id dari listing
+    const cancellationPolicyId =
+      listingData?.result?.cancellationPolicyId;
+
+    let cancellationPolicyData = null;
+
+    // 🔥 fetch cancellation policy jika ada id
+    if (cancellationPolicyId) {
+      const cancellationPolicyRes = await fetch(
+        `https://api.hostaway.com/v1/cancellationPolicies/${cancellationPolicyId}`,
+        { headers }
+      );
+
+      cancellationPolicyData = await cancellationPolicyRes.json();
+    }
+
     res.status(200).json({
       listing: listingData,
-      calendar: calendarData
+      calendar: calendarData,
+      cancellationPolicy: cancellationPolicyData
     });
 
   } catch (err) {
