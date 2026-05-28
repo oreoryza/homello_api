@@ -77,7 +77,7 @@ export default async function handler(req, res) {
 
       listingMapId,
 
-      status: 'new',
+      status: 'inquiry',
 
       arrivalDate: checkInDate,
       departureDate: checkOutDate,
