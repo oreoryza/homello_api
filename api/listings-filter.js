@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     const accessToken = tokenData.access_token;
 
     // call Hostaway
-    const response = await fetch(`https://api.hostaway.com/v1/listings?availabilityDateStart=${availabilityDateStart}&availabilityDateEnd=${availabilityDateEnd}&availabilityGuestNumber=${availabilityGuestNumber}`, {
+    const response = await fetch(`https://api.hostaway.com/v1/listings?includeResources=1&availabilityDateStart=${availabilityDateStart}&availabilityDateEnd=${availabilityDateEnd}&availabilityGuestNumber=${availabilityGuestNumber}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
